@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Account — ZarGold</title>
+<meta name="description" content="Sign in to your ZarGold dealer account to view transactions, invoices and account status.">
+<meta name="theme-color" content="#07090D">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23E9B949'/><text x='50' y='70' font-size='54' text-anchor='middle' font-family='Segoe UI' font-weight='700' fill='%231A1200'>ZG</text></svg>">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<div id="hdr"></div>
+
+<!-- ============ AUTH ============ -->
+<section class="auth" id="authView" hidden>
+  <div class="auth__side">
+    <div style="max-width:420px;position:relative;z-index:1">
+      <div class="eyebrow" id="authEyebrow">Dealer account</div>
+      <h2 style="font-size:32px;line-height:1.15;margin-block-end:14px" id="authSideTitle">A verified account, a written record, and the real market price.</h2>
+      <div style="margin-block-start:30px">
+        <div class="auth__feature">
+          <i><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></i>
+          <div><b id="asF1t">Account review</b><span id="asF1s">Every registration is checked by our team.</span></div>
+        </div>
+        <div class="auth__feature">
+          <i><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></i>
+          <div><b id="asF2t">Transaction history</b><span id="asF2s">Weight, purity, price and reference for every purchase.</span></div>
+        </div>
+        <div class="auth__feature">
+          <i><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></i>
+          <div><b id="asF3t">Private by default</b><span id="asF3s">Your documents and balances stay confidential.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="auth__main">
+    <div class="auth-card">
+      <div class="tabs" id="authTabs" style="margin-block-end:24px">
+        <button data-mode="signin" class="is-active" id="tabSignin">Sign in</button>
+        <button data-mode="register" id="tabRegister">Register</button>
+      </div>
+      <h1 id="authTitle">Sign in to your account</h1>
+      <p id="authSub">Access your transactions, invoices and account status.</p>
+      <div id="authAlert"></div>
+      <form id="authForm" autocomplete="on"></form>
+      <div id="authHint"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD ============ -->
+<section class="shell" id="dashView" hidden>
+  <aside class="side">
+    <div class="side__label" id="sideLabel">Account</div>
+    <a href="account.html" class="is-active" id="sideDash">Overview</a>
+    <a href="account.html#history" id="sideHistory">Transactions</a>
+    <a href="index.html" id="sidePrices">Live prices</a>
+    <div class="spacer" style="flex:1"></div>
+    <a href="#" id="sideLogout">Sign out</a>
+  </aside>
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1 id="dashTitle">My account</h1>
+        <p id="dashWelcome"></p>
+      </div>
+      <div id="dashHeadRight"></div>
+    </div>
+
+    <div id="dashAlert" style="margin-block-end:20px"></div>
+
+    <div class="kpis" id="dashKpis"></div>
+
+    <div class="panel" id="history">
+      <div class="panel__head">
+        <span class="panel__title" id="historyTitle">Transaction history</span>
+        <span class="muted" style="font-size:12.5px" id="historyCount"></span>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr id="txHead"></tr></thead>
+          <tbody id="txBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-root" id="modalRoot">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<div id="ftr"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/prices.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/account.js"></script>
+</body>
+</html>

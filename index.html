@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZarGold — Live Gold, Silver &amp; Crypto Prices in Afghanistan</title>
+<meta name="description" content="Live international gold, silver and cryptocurrency prices in Afghan Afghani. Verified dealer accounts, transparent transactions and full history.">
+<meta name="theme-color" content="#07090D">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23E9B949'/><text x='50' y='70' font-size='54' text-anchor='middle' font-family='Segoe UI' font-weight='700' fill='%231A1200'>ZG</text></svg>">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<div id="hdr"></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero__glow"></div>
+  <div class="hero__grid"></div>
+  <div class="wrap">
+    <div class="hero__inner">
+    <div class="hero__content">
+      <div class="badge-live"><span class="pulse"></span> <span id="liveLabel">Live market data · updated every minute</span></div>
+      <h1 id="heroTitle"></h1>
+      <p class="hero__sub" id="heroSub"></p>
+      <div class="hero__cta">
+        <a class="btn btn--gold" href="#market">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+          <span id="heroCta1">View live prices</span>
+        </a>
+        <a class="btn btn--ghost" href="account.html#register">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+          <span id="heroCta2">Open account</span>
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat__v"><em id="statInstruments">14</em></div><div class="stat__l" id="statL1">Live instruments</div></div>
+        <div class="stat"><div class="stat__v"><em id="statProvinces">34</em></div><div class="stat__l" id="statL2">Provinces covered</div></div>
+        <div class="stat"><div class="stat__v"><em id="statUpdates">10</em></div><div class="stat__l" id="statL3">Crypto assets</div></div>
+        <div class="stat"><div class="stat__v"><em>3</em></div><div class="stat__l" id="statL4">Languages</div></div>
+      </div>
+    </div>
+    <aside class="hero__visual" id="heroVisual"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker"><div class="ticker__track" id="tickerTrack"></div></div>
+
+<!-- ================= MARKET ================= -->
+<section class="section" id="market">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div class="eyebrow" id="eyebrowMarket">Market overview</div>
+      <h2 class="h2" id="h2Market">Today's precious metal prices</h2>
+      <p class="lead" id="leadMarket">International spot prices converted to Afghan Afghani at the live rate.</p>
+    </div>
+
+    <div class="grid grid--4" id="metalCards"></div>
+
+    <div class="panel reveal" style="margin-block-start:22px">
+      <div class="panel__head">
+        <div class="row" style="gap:14px;flex-wrap:wrap">
+          <span class="panel__title" id="chartTitle">Gold price trend</span>
+          <span class="pill pill--approved" id="chartBadge" style="font-size:11px"><i></i> XAU · USD/oz</span>
+        </div>
+        <div class="tabs" id="rangeTabs">
+          <button data-days="7">7D</button>
+          <button data-days="30" class="is-active">30D</button>
+          <button data-days="90">90D</button>
+        </div>
+      </div>
+      <div class="panel__body" id="chartHost" style="padding:10px 6px 6px"></div>
+      <div id="chartNote" style="padding:0 18px 14px;font-size:11.5px;color:var(--muted)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRYPTO ================= -->
+<section class="section section--tight" id="crypto">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div class="eyebrow" id="eyebrowCrypto">Cryptocurrency</div>
+      <h2 class="h2" id="h2Crypto">Crypto market</h2>
+      <p class="lead" id="leadCrypto">Top digital assets, priced in USD and converted to AFN.</p>
+    </div>
+    <div class="panel reveal">
+      <div class="tbl-wrap">
+        <table class="tbl" id="cryptoTbl">
+          <thead><tr id="cryptoHead"></tr></thead>
+          <tbody id="cryptoBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CURRENCY ================= -->
+<section class="section section--tight" id="currency">
+  <div class="wrap">
+    <div class="grid grid--2" style="gap:22px;align-items:start">
+      <div class="reveal">
+        <div class="eyebrow" id="eyebrowFx">Currency</div>
+        <h2 class="h2" id="h2Fx">Currency converter</h2>
+        <p class="lead" id="leadFx" style="margin-block-end:22px">Convert between Afghani and major world currencies.</p>
+
+        <div class="card card--flat">
+          <div class="field">
+            <label id="lblAmount">Amount</label>
+            <input class="input" id="fxAmount" type="number" value="1000" min="0" step="any">
+          </div>
+          <div class="field--row">
+            <div class="field" style="margin:0">
+              <label id="lblFrom">From</label>
+              <select class="input" id="fxFrom"></select>
+            </div>
+            <div class="field" style="margin:0">
+              <label id="lblTo">To</label>
+              <select class="input" id="fxTo"></select>
+            </div>
+          </div>
+          <div class="calc__out" style="border:1px solid var(--line);border-radius:12px;margin-block-start:18px;padding:18px">
+            <div class="calc__label" id="lblResult">Converted</div>
+            <div class="calc__value" id="fxResult" style="font-size:28px">—</div>
+            <div class="calc__hint" id="fxRateHint"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="panel">
+          <div class="panel__head"><span class="panel__title" id="fxTableTitle">Exchange rates</span>
+            <span class="pill pill--approved" style="font-size:11px"><i></i> USD base</span>
+          </div>
+          <div class="tbl-wrap">
+            <table class="tbl"><tbody id="fxBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COUNTRIES ================= -->
+<section class="section section--tight" id="countries">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div class="eyebrow" id="eyebrowCountries">Countries</div>
+      <h2 class="h2" id="h2Countries">Prices by country</h2>
+      <p class="lead" id="leadCountries">The same live market, localised to your unit and currency.</p>
+    </div>
+    <div class="grid grid--2" id="countryGrid"></div>
+
+    <div style="margin-block-start:34px" class="reveal">
+      <div class="between" style="margin-block-end:16px">
+        <h3 style="font-size:17px" id="citiesTitle">Prices across Afghanistan</h3>
+        <span class="muted" style="font-size:12.5px" id="citiesSub">Local reference price by province</span>
+      </div>
+      <div class="grid grid--4" id="cityGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CALCULATORS ================= -->
+<section class="section" id="calculators">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div class="eyebrow" id="eyebrowCalc">Calculators</div>
+      <h2 class="h2" id="h2Calc">Work out exactly what your gold is worth</h2>
+      <p class="lead" id="leadCalc">Convert between weight, karat and local price instantly.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-block-end:22px">
+      <div class="calc">
+        <div class="calc__form">
+          <div class="field--row">
+            <div class="field">
+              <label id="lblWeight">Weight</label>
+              <input class="input" id="calcWeight" type="number" value="10" min="0" step="any">
+            </div>
+            <div class="field">
+              <label id="lblUnit">Unit</label>
+              <select class="input" id="calcUnit">
+                <option value="gram">gram</option>
+                <option value="tola">tola</option>
+                <option value="mesghal">mesghal</option>
+                <option value="ounce">ounce</option>
+              </select>
+            </div>
+          </div>
+          <div class="field--row">
+            <div class="field">
+              <label id="lblKarat">Karat</label>
+              <select class="input" id="calcKarat">
+                <option value="24">24K — 999</option>
+                <option value="22">22K — 916</option>
+                <option value="21">21K — 875</option>
+                <option value="18">18K — 750</option>
+                <option value="14">14K — 585</option>
+              </select>
+            </div>
+            <div class="field">
+              <label id="lblMetal">Metal</label>
+              <select class="input" id="calcMetal">
+                <option value="XAU">Gold</option>
+                <option value="XAG">Silver</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="calc__out">
+          <div class="calc__label" id="calcOutLabel">Estimated value</div>
+          <div class="calc__value" id="calcValue">—</div>
+          <div class="calc__hint" id="calcHint"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="calc">
+        <div class="calc__form">
+          <h3 style="font-size:16px;margin-block-end:6px" id="zakatTitle">Zakat calculator</h3>
+          <p class="muted" style="font-size:13px;margin-block-end:18px" id="zakatSub">2.5% of gold or silver above the nisab threshold.</p>
+          <div class="field--row">
+            <div class="field">
+              <label id="lblZWeight">Gold weight (gram)</label>
+              <input class="input" id="zakatWeight" type="number" value="100" min="0" step="any">
+            </div>
+            <div class="field">
+              <label id="lblZKarat">Karat</label>
+              <select class="input" id="zakatKarat">
+                <option value="24">24K</option>
+                <option value="22">22K</option>
+                <option value="21">21K</option>
+                <option value="18">18K</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="calc__out">
+          <div class="calc__label" id="zakatDueLabel">Zakat due</div>
+          <div class="calc__value" id="zakatValue">—</div>
+          <div class="calc__hint" id="zakatHint"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS ================= -->
+<section class="section section--tight" id="insights">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div class="eyebrow" id="eyebrowNews">Insights</div>
+      <h2 class="h2" id="h2News">Market insights</h2>
+      <p class="lead" id="leadNews">Short daily notes on what is moving the gold market.</p>
+    </div>
+    <div class="grid grid--3" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section__head section__head--center reveal">
+      <div class="eyebrow" id="eyebrowWhy" style="justify-content:center">Why us</div>
+      <h2 class="h2" id="h2Why">Why trade with us</h2>
+      <p class="lead" id="leadWhy">A registered gold dealer, transparent pricing and a written record for every transaction.</p>
+    </div>
+    <div class="grid grid--4" id="whyGrid"></div>
+
+    <div class="band reveal" style="margin-block-start:56px">
+      <h2 id="bandTitle">Open your dealer account today</h2>
+      <p id="bandText">Verify your identity once, then buy and sell with a full written record of every transaction.</p>
+      <div class="row">
+        <a class="btn btn--gold" href="account.html#register" id="bandBtn">Open account</a>
+        <a class="btn btn--ghost" href="tel:+93700000000" id="bandBtn2">Call the office</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="ftr"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/prices.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
