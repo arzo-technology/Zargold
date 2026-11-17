@@ -86,6 +86,10 @@ html[dir="rtl"] .eyebrow::before { background: linear-gradient(270deg, transpare
 .lead { color: var(--muted); margin-block-start: 12px; font-size: 15.5px; }
 
 .grid { display: grid; gap: 18px; }
+/* grid items must be allowed to shrink below their content's min-content width,
+   otherwise a wide table inside one column stretches the whole section */
+.grid > *, .hero__inner > * { min-width: 0; }
+.panel, .tbl-wrap, .card { min-width: 0; }
 .grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
 .grid--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
@@ -616,6 +620,10 @@ html[dir="rtl"] select.input { background-position: 18px 50%, 13px 50%; }
   .brand__name { font-size: 16px; }
   /* let data tables scroll sideways instead of squeezing into 350px */
   table.tbl { min-width: 620px; }
+  /* crypto: on a phone show name, AFN price and change only */
+  #cryptoTbl { min-width: 0; }
+  #cryptoTbl th:nth-child(2), #cryptoTbl td:nth-child(2),
+  #cryptoTbl th:nth-child(5), #cryptoTbl td:nth-child(5) { display: none; }
   .kpi__v { font-size: 20px; }
   .kpi { padding: 14px; }
   .langswitch__btn { padding: 7px 9px; }
