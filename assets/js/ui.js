@@ -255,9 +255,14 @@
         '<span>' + langLabel[l] + '</span><span class="mono" style="font-size:11px;opacity:.6">' + l.toUpperCase() + '</span></button>';
     }).join('');
 
+    var mobileAuth = user
+      ? '<a href="account.html">' + UI.t('dash.title') + '</a>'
+      : '<a href="account.html#signin">' + UI.t('cta.signin') + '</a>' +
+        '<a href="account.html#register" style="color:var(--gold);font-weight:600">' + UI.t('cta.register') + '</a>';
+
     var mobileNav = NAV.map(function (n) {
       return '<a href="' + n[0] + '">' + UI.t(n[1]) + '</a>';
-    }).join('') + '<a href="account.html">' + UI.t('dash.title') + '</a>';
+    }).join('') + mobileAuth;
 
     return '<header class="hdr">' +
       '<div class="wrap hdr__inner">' +

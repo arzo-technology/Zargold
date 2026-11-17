@@ -126,6 +126,12 @@ window.CONFIG = {
     news:           true
   },
 
+  /* ---------- Demo preview links -------------------------------------------
+     Lets you open account.html?as=ahmad or admin.html?as=admin to jump
+     straight into a dashboard for a presentation.
+     THIS IS A LOGIN BYPASS. Set it to false before real customers exist. */
+  devPreview: true,
+
   /* ---------- Data mode & providers --------------------------------------- */
   dataMode: 'live',            // 'demo' | 'live'
   refreshSeconds: 60,          // UI refresh cadence

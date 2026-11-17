@@ -47,7 +47,7 @@
 
 /* ---------- reset --------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -609,6 +609,17 @@ html[dir="rtl"] select.input { background-position: 18px 50%, 13px 50%; }
 }
 @media (max-width: 820px) {
   .section { padding-block: 56px; }
+  /* the header cannot fit logo + language + two buttons + menu on a phone */
+  .hdr__inner { gap: 10px; }
+  .hdr__actions .btn { display: none; }
+  .brand__sub { display: none; }
+  .brand__name { font-size: 16px; }
+  /* let data tables scroll sideways instead of squeezing into 350px */
+  table.tbl { min-width: 620px; }
+  .kpi__v { font-size: 20px; }
+  .kpi { padding: 14px; }
+  .langswitch__btn { padding: 7px 9px; }
+  .wrap { padding-inline: 18px; }
   .grid--3, .grid--4, .grid--2 { grid-template-columns: 1fr; }
   .calc { grid-template-columns: 1fr; }
   .calc__out { border-inline-start: 0; border-block-start: 1px solid var(--line); }

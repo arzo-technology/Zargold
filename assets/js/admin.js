@@ -21,7 +21,7 @@
     $('lgTitle').textContent = UI.t('admin.loginTitle');
     $('lgSub').textContent = UI.t('admin.loginSub');
     $('lgBtn').textContent = UI.t('auth.signin');
-    $('lgHint').innerHTML = C.dataMode === 'demo'
+    $('lgHint').innerHTML = C.devPreview === true
       ? '<div class="card card--flat" style="margin-block-start:20px;padding:12px 14px;font-size:12.5px">' +
         '<span class="muted">Demo administrator:</span> <span class="mono">admin@zargold.af / admin123</span></div>'
       : '';
@@ -398,7 +398,7 @@
     STORE.init();
 
     // demo-only quick access: admin.html?as=admin
-    if (C.dataMode === 'demo' && new URLSearchParams(location.search).get('as') === 'admin') {
+    if (C.devPreview === true && new URLSearchParams(location.search).get('as') === 'admin') {
       STORE.login(C.demoAdmin.email, C.demoAdmin.password);
     }
 

@@ -25,13 +25,17 @@ Chrome and the whole platform runs.
 | Pending approval | `fatima@example.com` | `fatima123` |
 | Administrator | `admin@zargold.af` | `admin123` |
 
-Quick preview links (demo mode only):
+Quick preview links (these require `devPreview: true` in `config.js`):
 
 - Customer dashboard — `account.html?as=ahmad`
 - Pending-account view — `account.html?as=fatima`
 - Admin panel — `admin.html?as=admin`
 - Pashto site — `index.html?lang=ps`
 - Dari site — `index.html?lang=fa`
+
+> ⚠️ `devPreview` is a **login bypass** — anyone can open
+> `admin.html?as=admin` and get in. It exists for demonstrations only.
+> Set `devPreview: false` before the site handles a single real customer.
 
 ---
 

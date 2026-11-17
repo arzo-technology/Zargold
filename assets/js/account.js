@@ -76,7 +76,7 @@
     $('authForm').innerHTML = f;
 
     var hint = '';
-    if (C.dataMode === 'demo') {
+    if (C.devPreview === true) {
       hint = '<div class="card card--flat" style="margin-block-start:22px;padding:14px 16px">' +
         '<div class="muted" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-block-end:8px">' + L(TXT.demo) + '</div>' +
         '<div style="font-size:12.5px;line-height:1.9">' +
@@ -265,7 +265,7 @@
     if (hash === 'register') mode = 'register';
 
     // demo-only quick access: account.html?as=ahmad | fatima
-    if (C.dataMode === 'demo') {
+    if (C.devPreview === true) {
       var asUser = new URLSearchParams(location.search).get('as');
       var accounts = {
         ahmad: ['ahmad@example.com', 'ahmad123'],
