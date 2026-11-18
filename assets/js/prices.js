@@ -105,7 +105,7 @@
   }
 
   /* ---------------- live adapters + cache --------------------------------- */
-  var CACHE_KEY = 'zargold.livecache.v1';
+  var CACHE_KEY = 'zargold.livecache.v2';
 
   function readCache() {
     try {
@@ -134,8 +134,16 @@
     var cache = readCache();
     var maxAge = (C.liveCacheMinutes || 60) * 60000;
 
+    // ?refresh=1 forces a real fetch, even if the cache is still warm
+    var force = false;
+    try {
+      if (typeof location !== 'undefined' && location.search) {
+        force = new URLSearchParams(location.search).get('refresh') === '1';
+      }
+    } catch (e) {}
+
     // fresh cache: no network call at all (protects the API quota)
-    if (cache && cache.at && (Date.now() - cache.at) < maxAge) {
+    if (!force && cache && cache.at && (Date.now() - cache.at) < maxAge) {
       applyPayload(cache);
       return Promise.resolve();
     }
@@ -223,7 +231,10 @@
   function localPerGram(code, countryCode, karat) {
     var country = getCountry(countryCode);
     var fx = state.fx[country.currency] || 1;
-    var premium = code === 'XAU' ? (country.code === 'AF' ? 0.015 : 0.008) : 0.02;
+    var DP = C.dealerPremium || { AF: 0.015, default: 0.008, silver: 0.02 };
+    var premium = (code === 'XAG')
+      ? (DP.silver || 0.02)
+      : (country.code === 'AF' ? (DP.AF || 0) : (DP.default || 0));
     var usdPerGram = spotPerUnit(code, 'gram');
     var purity = karat ? karat / 24 : 1;
     return usdPerGram * fx * (1 + premium) * purity;

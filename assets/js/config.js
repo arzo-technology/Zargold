@@ -79,6 +79,12 @@ window.CONFIG = {
       cities: { en: ['New York', 'Chicago', 'Los Angeles'], ps: ['نیویارک', 'شیکاګو', 'لاس انجلس'], fa: ['نیویورک', 'شیکاگو', 'لس‌آنجلس'] } }
   ],
 
+  /* ---------- Dealer premium -----------------------------------------------
+     Percentage added on top of the international spot price, because a sarraf
+     in Kabul sells above the world price. Set AF to 0 to show pure spot.
+     This is the main reason your figure differs from international sites. */
+  dealerPremium: { AF: 0.015, default: 0.008, silver: 0.02 },
+
   /* ---------- Units -------------------------------------------------------- */
   units: {
     ounce:   31.1034768,
@@ -135,10 +141,12 @@ window.CONFIG = {
   /* ---------- Data mode & providers --------------------------------------- */
   dataMode: 'live',            // 'demo' | 'live'
   refreshSeconds: 60,          // UI refresh cadence
-  // Live responses are cached in the browser for this long. The free
-  // MetalpriceAPI plan allows 100 requests/month, so 12 hours ≈ 60/month.
-  // Lower this once a paid plan is active.
-  liveCacheMinutes: 720,
+  // Live responses are cached in the browser for this long.
+  // The free MetalpriceAPI plan allows 100 requests/month and publishes ONE
+  // close per day (23:59 UTC), so 8 hours ≈ 90 calls/month: comfortably inside
+  // the quota while picking up each new daily close the same morning.
+  // For real 5-minute prices you need the paid plan, then set this to 5.
+  liveCacheMinutes: 480,
   live: {
     metals: {
       url: 'https://api.metalpriceapi.com/v1/latest',
